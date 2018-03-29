@@ -1,0 +1,47 @@
+namespace org.unico.project.allocation
+
+asset  Project identified by pid {
+  o String pid
+  o String name
+  o Integer contributorsRequired
+  o Integer contributorsAllocated
+  --> Member[] contributors
+}
+
+enum AllocationStatus {
+  o RESERVED
+  o WORKING_ON_PROJECT
+  o FREE
+}
+
+enum Role {
+  o TEAM_LEAD 
+  o DEVELOPER
+  o TESTER
+}
+
+abstract participant Member identified by email {
+  o String email
+  o String firstName
+  o String lastName
+  o Role role
+}
+
+
+participant Contributor extends Member {
+  o AllocationStatus allocationStatus
+}
+
+participant TeamLead extends Member {
+  --> Project project
+}
+
+transaction AllocateContributors {
+  --> Project project
+  --> TeamLead teamLead
+  --> Contributor contributor
+}
+
+transaction SeeProjects {
+  --> Project[] projects
+}

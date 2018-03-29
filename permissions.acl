@@ -1,0 +1,15 @@
+rule TeamLead {
+  description: "Allow the team lead total access"
+  participant: "org.unico.project.allocation.TeamLead"
+  operation: ALL
+  resource: "org.unico.project.allocation.*"
+  action: ALLOW
+}
+
+rule Contributor {
+   description: "Allow the team lead total access"
+   participant: "org.unico.project.allocation.Contributor"
+   operation: READ
+   resource: "org.unico.project.allocation.Project"
+   action: ALLOW
+}
