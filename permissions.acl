@@ -2,7 +2,7 @@ rule TeamLead {
   description: "Allow the team lead total access"
   participant: "org.unico.project.allocation.TeamLead"
   operation: ALL
-  resource: "org.unico.project.allocation.*"
+  resource: "org.unico.project.allocation.AllocateContributors"
   action: ALLOW
 }
 
